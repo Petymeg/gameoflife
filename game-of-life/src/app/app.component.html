@@ -1,14 +1,13 @@
 <div class="grid-container">
-  <div *ngFor="let row of cells; let rowId = index" class="grid-row">
-    <div
-      *ngFor="let cell of row; let columnId = index"
-      class="grid-cell"
-      (click)="toggleCell(rowId, columnId)"
-    >
+  <div
+    *ngFor="let row of gameService.cells; let rowId = index"
+    class="grid-row"
+  >
+    <div *ngFor="let cell of row; let columnId = index" class="grid-cell">
       <app-grid-cell
         [coordinateY]="rowId"
         [coordinateX]="columnId"
-        [value]="cells[rowId][columnId]"
+        [value]="gameService.cells[rowId][columnId]"
       ></app-grid-cell>
     </div>
   </div>

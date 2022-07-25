@@ -1,1 +1,5 @@
-<div class="cell-container" [ngClass]="value ? 'alive' : 'dead'"></div>
+<div
+  class="cell-container"
+  [ngClass]="value ? 'alive' : 'dead'"
+  (click)="toggleCell()"
+></div>
