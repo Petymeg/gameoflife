@@ -93,4 +93,17 @@ export class GameService {
   pause(): void {
     clearInterval(this.playTimer);
   }
+
+  randomize(): void {
+    this.generation = 0;
+
+    for (let i: number = 0; i < this.rowCount; i++) {
+      this.cells.push([]);
+      for (let j: number = 0; j < this.columnCount; j++) {
+        this.cells[i][j] = Math.random() > 0.5 ? true : false;
+      }
+    }
+
+    this.initialState = [...this.cells];
+  }
 }
