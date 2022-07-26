@@ -29,6 +29,8 @@ export class GameService {
         this.cells[i][j] = false;
       }
     }
+
+    this.initialState = [...this.cells];
   }
 
   toggleCell(coordinateY: number, coordinateX: number): void {
