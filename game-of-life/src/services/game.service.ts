@@ -10,6 +10,7 @@ export class GameService {
   private generation: number = 0;
   private initialState: boolean[][] = [];
   private playTimer: NodeJS.Timer | undefined;
+  private isPlaying: boolean = false;
 
   constructor() {
     this.generateInitialCells();
@@ -21,6 +22,10 @@ export class GameService {
 
   getGeneration(): number {
     return this.generation;
+  }
+
+  getIsPlaying(): boolean {
+    return this.isPlaying;
   }
 
   generateInitialCells(): void {
@@ -81,16 +86,23 @@ export class GameService {
     return liveNeighbors;
   }
 
+  clear(): void {
+    this.generation = 0;
+    this.generateInitialCells();
+  }
+
   reset(): void {
     this.generation = 0;
     this.cells = [...this.initialState];
   }
 
   play(): void {
+    this.isPlaying = true;
     this.playTimer = setInterval(() => this.nextGeneration(), 500);
   }
 
   pause(): void {
+    this.isPlaying = false;
     clearInterval(this.playTimer);
   }
 
