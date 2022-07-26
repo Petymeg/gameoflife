@@ -87,7 +87,7 @@ export class GameService {
   }
 
   play(): void {
-    this.playTimer = setInterval(() => this.nextGeneration(), 1000);
+    this.playTimer = setInterval(() => this.nextGeneration(), 500);
   }
 
   pause(): void {
