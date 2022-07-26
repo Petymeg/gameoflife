@@ -4,12 +4,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class GameService {
-  rowCount: number = 30;
-  columnCount: number = 30;
-  cells: boolean[][] = [];
+  private rowCount: number = 30;
+  private columnCount: number = 30;
+  private cells: boolean[][] = [];
+  private generation: number = 0;
 
   constructor() {
     this.generateInitialCells();
+  }
+
+  getCells(): boolean[][] {
+    return this.cells;
+  }
+
+  getGeneration(): number {
+    return this.generation;
   }
 
   generateInitialCells(): void {
