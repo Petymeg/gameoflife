@@ -9,6 +9,7 @@ export class GameService {
   private cells: boolean[][] = [];
   private generation: number = 0;
   private initialState: boolean[][] = [];
+  private playTimer: NodeJS.Timer | undefined;
 
   constructor() {
     this.generateInitialCells();
@@ -83,5 +84,13 @@ export class GameService {
   reset(): void {
     this.generation = 0;
     this.cells = [...this.initialState];
+  }
+
+  play(): void {
+    this.playTimer = setInterval(() => this.nextGeneration(), 1000);
+  }
+
+  pause(): void {
+    clearInterval(this.playTimer);
   }
 }
