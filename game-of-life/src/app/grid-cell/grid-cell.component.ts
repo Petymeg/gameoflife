@@ -14,6 +14,7 @@ export class GridCellComponent {
   constructor(private gameService: GameService) {}
 
   toggleCell(): void {
-    this.gameService.toggleCell(this.coordinateY, this.coordinateX);
+    if (this.gameService.getGeneration() === 0)
+      this.gameService.toggleCell(this.coordinateY, this.coordinateX);
   }
 }
